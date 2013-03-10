@@ -1,0 +1,20 @@
+<div class="row">
+	<div class="one centered half">
+		<h2 class="padded">Log In to Game-A-Cert</h2>
+
+<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name) ) do |f| %>
+
+  <%= f.input :email, wrapper_html: { class: "one half padded"} %>
+
+  <%= f.input :password, wrapper_html: {class: "one half padded"} %>
+
+  <% if devise_mapping.rememberable? -%>
+    <%= f.input :remember_me, as: :boolean, wrapper_html: {class: "padded"} %>
+  <% end -%>
+
+  <div class="padded"><%= f.submit "Log In" %></div>
+<% end %>
+
+<p class="padded"><%= render "devise/shared/links" %></p>
+	</div>
+</div>

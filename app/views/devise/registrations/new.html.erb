@@ -1,0 +1,25 @@
+<div class="row">
+	<div class="one centered half">
+		<h2 class="padded">Register for Game-A-Cert</h2>
+
+<%= simple_form_for @user do |f| %>
+
+  <%= f.input :first_name, wrapper_html: { class: "one half padded" } %>
+
+  <%= f.input :last_name, wrapper_html: { class: "one half padded"} %>
+
+  <%= f.input :profile_name, required: true, wrapper_html: { class: "one half padded"} %>
+
+  <%= f.input :email, required: true, wrapper_html: { class: "one half padded"} %>
+
+  <%= f.input :password, required: true, wrapper_html: { class: "padded"} %>
+
+  <%= f.input :password_confirmation, required: true, wrapper_html: { class: "padded"} %>
+
+  <div class="padded"><%= f.submit "Register" %></div>
+
+<% end %>
+
+<p class="padded"><%= render "devise/shared/links" %></p>
+	</div>
+</div>
