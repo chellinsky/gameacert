@@ -7,7 +7,8 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
-                  :first_name, :last_name, :profile_name
+                  :first_name, :last_name, :profile_name, :bio,
+                  :linkedin_url, :facebook_url, :twitter_url, :expertise
   # attr_accessible :title, :body
 
   validates :profile_name, presence: true,
@@ -24,7 +25,8 @@ class User < ActiveRecord::Base
 
   def gravatar_url
   	stripped_email = email.strip
-  	"http://gravatar.com/avatar/#{"+ Digest::MD5.hexdigest(stripped_email.downcase) +"}?d=retro"
+    hashed_email = Digest::MD5.hexdigest(stripped_email.downcase)
+  	"http://gravatar.com/avatar/#{hashed_email}?d=retro"
   end
 
 end

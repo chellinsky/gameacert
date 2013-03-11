@@ -1,0 +1,42 @@
+<h1 class="padded"><%= image_tag current_user.gravatar_url %> Profile for <%= current_user.profile_name %></h1>
+<table>
+	<tbody>
+		<tr>
+			<td>First Name:</td>
+			<td><%= current_user.first_name %></td>
+		</tr>
+		<tr>
+			<td>Last Name:</td>
+			<td><%= current_user.last_name %></td>
+		</tr>
+		<tr>
+			<td>Profile Name:</td>
+			<td><%= current_user.profile_name %></td>
+		</tr>
+		<tr>
+			<td>Email:</td>
+			<td><%= current_user.email %></td>
+		</tr>
+		<tr>
+			<td>Bio:</td>
+			<td><%= current_user.bio %></td>
+		</tr>
+		<tr>
+			<td>Expertise:</td>
+			<td><%= current_user.expertise %></td>
+		</tr>
+		<tr>
+			<td>LinkedIn URL:</td>
+			<td><%= current_user.linkedin_url %></td>
+		</tr>
+		<tr>
+			<td>Facebook URL:</td>
+			<td><%= current_user.facebook_url %></td>
+		</tr>
+		<tr>
+			<td>Twitter URL:</td>
+			<td><%= current_user.twitter_url %></td>
+		</tr>
+	</tbody>
+</table>
+<p class="padded"><%= link_to "Edit Profile", edit_user_path %></p>

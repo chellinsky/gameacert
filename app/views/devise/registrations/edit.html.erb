@@ -14,9 +14,19 @@
 
   <%= f.input :email, wrapper_html: { class: "one half padded"} %>
 
-  <%= f.input :password, wrapper_html: { class: "padded"} %>
+  <%= f.input :bio, wrapper_html: { class: "one half padded"} %>
 
-  <%= f.input :password_confirmation, wrapper_html: { class: "padded"} %>
+  <%= f.input :expertise, label: "Expertise (place commas between each area of expertise", wrapper_html: { class: "one half padded"} %>
+
+  <%= f.input :linkedin_url, label: 'LinkedIn URL', wrapper_html: { class: "one third padded"} %>
+
+  <%= f.input :facebook_url, label: 'Facebook URL', wrapper_html: { class: "one third padded"} %>
+
+  <%= f.input :twitter_url, label: 'Twitter URL', wrapper_html: { class: "one third padded"} %>
+
+  <%= f.input :password, label: 'New Password (only enter if changing passwords)', wrapper_html: { class: "padded"} %>
+
+  <%= f.input :password_confirmation, label: 'Confirm New Password', wrapper_html: { class: "padded"} %>
 
   <%= f.input :current_password, required: true, wrapper_html: { class: "padded"} %>
 
