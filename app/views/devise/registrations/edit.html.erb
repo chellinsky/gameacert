@@ -1,8 +1,6 @@
-<div class="row">
-  <div class="one centered half">
     <h2 class="padded">Edit <%= resource_name.to_s.humanize %></h2>
 
-<%= simple_form_for @user do |f| %>
+<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div class="padding">Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
@@ -14,11 +12,11 @@
 
   <%= f.input :profile_name, required: true, wrapper_html: { class: "one half padded"} %>
 
-  <%= f.input :email, required: true, wrapper_html: { class: "one half padded"} %>
+  <%= f.input :email, wrapper_html: { class: "one half padded"} %>
 
-  <%= f.input :password, required: true, wrapper_html: { class: "padded"} %>
+  <%= f.input :password, wrapper_html: { class: "padded"} %>
 
-  <%= f.input :password_confirmation, required: true, wrapper_html: { class: "padded"} %>
+  <%= f.input :password_confirmation, wrapper_html: { class: "padded"} %>
 
   <%= f.input :current_password, required: true, wrapper_html: { class: "padded"} %>
 
@@ -31,5 +29,3 @@
 <div class="padded"><p>Unhappy?  Want to cancel your account?  Use the button below. <%= button_to "Cancel Account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p></div>
 
 <p class="padded"><%= link_to "Back", :back %></div>
-  </div>
-</div>

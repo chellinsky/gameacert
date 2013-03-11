@@ -17,8 +17,6 @@ class User < ActiveRecord::Base
             	message: 'Profile name must only contain numbers and letters'
             }
   validates :email, presence: true, uniqueness: true
-  validates :password, presence: true
-  validates :password_confirmation, presence: true
 
   def full_name
   	first_name + " " + last_name
