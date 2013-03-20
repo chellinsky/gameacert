@@ -1,2 +1,76 @@
-<h1>This is the homepage</h1>
-<p>Please edit it to add content.</p>
+<div class="row">
+	<div class="span9" id="actions">
+		<h2>Welcome!  It's Your Move...</h2>
+		<% if user_signed_in? %>
+			<p>Here are the next games you should play....</p>
+			<p>Here are some other popular games you could start....</p>
+		<% else %>
+			<p>Insert some catchy marketing lines here.</p>
+			<p>Want to learn more about Game-A-Cert?  Click here for an in depth look at how games can help you enhance your professional knowledge.</p>
+			<p>If you are ready to start your first game, register <%= link_to "here", register_path %>.</p>
+		<% end %>
+	</div>
+	<div class="span3" id="badges">
+		<div class="well">
+			<h3 class="text-center">Prizes</h3>
+			<% if user_signed_in? %>
+				<p>After you earn prizes by playing games or verifying certifications, they will show up here.</p>
+			<% else %>
+				<p>Do you want to start earning virtual prizes for learning and demonstrating your professional knowledge?<br>If you do, register <%= link_to "here", register_path %>!</p>
+				<p>If you are already registered, log in <%= link_to "here", login_path %>.</p>
+			<% end %>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="span12">
+		<div id="featuredstory">
+			<h1 class="text-center">Featured Article From the Blog Title</h1>
+			<img src="http://placekitten.com/g/300/400" class="pull-left" id="featurearticleimg" />
+			<p class="lead">The main story (a picture and text or video, etc.) goes here.  It will update weekly.</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eget felis et purus faucibus convallis. Suspendisse nec ligula ac purus aliquet suscipit et vitae mauris. Nullam porttitor diam dapibus turpis lacinia pulvinar. Vestibulum molestie sagittis eros, in semper sem suscipit id. Maecenas id est eget massa tincidunt semper. Nunc mollis arcu a nulla pulvinar adipiscing quis non lacus. Maecenas non nibh velit, vitae euismod lectus. Vestibulum nunc massa, egestas vitae malesuada in, vehicula sit amet tellus. Donec sed tortor augue. Donec sapien enim, porttitor in ornare a, cursus posuere nibh. Integer a turpis ac massa sodales rhoncus sed vel sapien.</p>
+			<p>Praesent vulputate hendrerit laoreet. Curabitur hendrerit quam elit. Morbi ut tellus diam, vel luctus nulla. Aliquam rhoncus, erat at auctor tempor, eros orci aliquam mi, vitae laoreet tellus tellus at neque. Maecenas nec bibendum nisl. Nullam sed sagittis velit. Maecenas vulputate tempus sem sed malesuada. Donec ligula tortor, facilisis sed tempor quis, posuere at lacus. Nam vehicula, nulla ac molestie euismod, leo arcu hendrerit purus, id sodales velit nulla vel nisi. Quisque vitae risus neque, vitae suscipit est. Vivamus eget congue nisl.</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eget felis et purus faucibus convallis. Suspendisse nec ligula ac purus aliquet suscipit et vitae mauris. Nullam porttitor diam dapibus turpis lacinia pulvinar. Vestibulum molestie sagittis eros, in semper sem suscipit id. Maecenas id est eget massa tincidunt semper. Nunc mollis arcu a nulla pulvinar adipiscing quis non lacus. Maecenas non nibh velit, vitae euismod lectus. Vestibulum nunc massa, egestas vitae malesuada in, vehicula sit amet tellus. Donec sed tortor augue. Donec sapien enim, porttitor in ornare a, cursus posuere nibh. Integer a turpis ac massa sodales rhoncus sed vel sapien.</p>
+			<p>Praesent vulputate hendrerit laoreet. Curabitur hendrerit quam elit. Morbi ut tellus diam, vel luctus nulla. Aliquam rhoncus, erat at auctor tempor, eros orci aliquam mi, vitae laoreet tellus tellus at neque. Maecenas nec bibendum nisl. Nullam sed sagittis velit. Maecenas vulputate tempus sem sed malesuada. Donec ligula tortor, facilisis sed tempor quis, posuere at lacus. Nam vehicula, nulla ac molestie euismod, leo arcu hendrerit purus, id sodales velit nulla vel nisi. Quisque vitae risus neque, vitae suscipit est. Vivamus eget congue nisl.</p>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="span6" id="aboutbox">
+		<h3>About Game-A-Cert</h3>
+		<p class="lead">Include an overview of the philosophy of training, links to example content, and a link to the full "about us" page.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eget felis et purus faucibus convallis. Suspendisse nec ligula ac purus aliquet suscipit et vitae mauris. Nullam porttitor diam dapibus turpis lacinia pulvinar. Vestibulum molestie sagittis eros, in semper sem suscipit id. Maecenas id est eget massa tincidunt semper. Nunc mollis arcu a nulla pulvinar adipiscing quis non lacus. Maecenas non nibh velit, vitae euismod lectus. Vestibulum nunc massa, egestas vitae malesuada in, vehicula sit amet tellus. Donec sed tortor augue. Donec sapien enim, porttitor in ornare a, cursus posuere nibh. Integer a turpis ac massa sodales rhoncus sed vel sapien.</p>
+	</div>
+	<div class="span6" id="blogbox">
+		<h3>More From the Blog</h3>
+		<p class="lead">Pull in content from the blog here.  Make sure it doesn't duplicate the featured article from above.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eget felis et purus faucibus convallis. Suspendisse nec ligula ac purus aliquet suscipit et vitae mauris. Nullam porttitor diam dapibus turpis lacinia pulvinar. Vestibulum molestie sagittis eros, in semper sem suscipit id. Maecenas id est eget massa tincidunt semper. Nunc mollis arcu a nulla pulvinar adipiscing quis non lacus. Maecenas non nibh velit, vitae euismod lectus. Vestibulum nunc massa, egestas vitae malesuada in, vehicula sit amet tellus. Donec sed tortor augue. Donec sapien enim, porttitor in ornare a, cursus posuere nibh. Integer a turpis ac massa sodales rhoncus sed vel sapien.</p>
+	</div>
+</div>
+<div id="footerbox">
+	<div class="row">
+		<div class="span3">
+			<h4 class="text-center">Newsletter Signup</h4>
+			<p class="text-center">Mailchimp Form</p>
+		</div>
+		<div class="span3">
+			<h4 class="text-center">Email Us</h4>
+			<address class="text-center">
+				andrew@chellinsky.com
+			</address>
+		</div>
+		<div class="span3">
+			<h4 class="text-center">Go Old School...</h4>
+			<address>
+				<strong>Game-A-Cert</strong><br>
+				P.O. Box 455<br>
+				Monrovia, CA 91016<br>
+				<abbr title="Phone">P:</abbr> (626) 408-2440
+			</address>
+		</div>
+		<div class="span3">
+			<h4 class="text-center">...Or Not</h4>
+			<p class="text-center">| | <i class="icon-facebook icon-2x"></i> | | <i class="icon-twitter icon-2x"></i> | | <i class="icon-linkedin icon-2x"></i> | | <i class="icon-google-plus icon-2x"></i> | |</p>
+		</div>
+	</div>
+</div>

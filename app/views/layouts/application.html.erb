@@ -7,65 +7,68 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="row">
-	<nav>
-		<ul class="row">
-			<li class="one half">
-				<%= link_to raw("<i class='icon-home'></i> Game-A-Cert"), root_path %>
-			</li>
-				<% if user_signed_in? %>
-				<li class="menu one sixth">
-					<%= link_to raw("<i class='icon-user'></i>") + current_user.profile_name, profile_page_path(:id => current_user.profile_name) %>
-					<ul>
-						<li><a href="#">Dashboard</a></li>
-						<li><a href="#">Accomplishments</a></li>
-						<li><%= link_to "Settings", edit_user_path %></li>
+<div class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container">
+			<ul class="nav">
+				<li>
+					<span><%= link_to "Game-A-Cert", root_path, { :class=>"brand" } %></span>
+				</li>
+			</ul>
+			<ul class="nav pull-right">
+					<% if user_signed_in? %>
+					<li class="dropdown">
+						<%= link_to raw("<i class='icon-user'></i>") + current_user.profile_name, profile_page_path(:id => current_user.profile_name), { :class=>"dropdown-toggle", :"data-toggle"=>"dropdown" } %>
+						<ul class="dropdown-menu">
+							<li><a href="#">Dashboard</a></li>
+							<li><a href="#">Accomplishments</a></li>
+							<li><%= link_to "Settings", edit_user_path %></li>
+						</ul>
+					<% else %>
+					<li>
+						<%= link_to raw("<i class='icon-thumbs-up'></i> Register"), register_path %>
+					<% end %>
+				</li>
+				<li class="dropdown">
+					<a class="dropdown-toggle" id="gamesLabel" role="button" data-toggle="dropdown" href="#"><i class="icon-road"></i> Games<b class="caret"></b></a>
+					<ul class="dropdown-menu" role="menu" aria-labelledby="gamesLabel">
+						<li role="presentation">
+							<a role="menuitem" tabindex="-1" href="#">Current Games</a>
+						</li>
+						<li role="presentation">
+							<a role="menuitem" tabindex="-1" href="#">Finished Games</a>
+						</li>
+						<li role="presentation">
+							<a role="menuitem" tabindex="-1" href="#">Available Games</a>
+						</li>
 					</ul>
-				<% else %>
-				<li class="one sixth">
-					<%= link_to raw("<i class='icon-thumbs-up'></i> Register"), register_path %>
-				<% end %>
-			</li>
-			<li class="menu one sixth">
-				<a href="#"><i class="icon-road"></i> Games</a>
-				<ul>
-					<li><a href="#">Current Games</a></li>
-					<li><a href="#">Finished Games</a></li>
-					<li><a href="#">Available Games</a></li>
-				</ul>
-			</li>
-			<li class="one sixth">
-				<% if user_signed_in? %> 
-					<%= link_to raw("<i class='icon-signout'></i> Log Out"), logout_path %>
-				<% else %> 
-					<%= link_to raw("<i class='icon-signin'></i> Log In"), login_path %>
-				<% end %>
-			</li>
-		</ul>
-	</nav>
+				</li>
+				<li>
+					<% if user_signed_in? %> 
+						<%= link_to raw("<i class='icon-signout'></i> Log Out"), logout_path %>
+					<% else %> 
+						<%= link_to raw("<i class='icon-signin'></i> Log In"), login_path %>
+					<% end %>
+				</li>
+			</ul>
+		</div>
+	</div>
 </div>
-<div class="containter">
-	<div class="padded">
-
-		<% flash.each do |type, message| %>
-			<div class="row">
-				<div class="one centered half">
-					<div class="important message">
-						<%= message %>
-					</div>
-				</div>
-			</div>
-
+<div class="container main-body-container">
+	<% flash.each do |type, message| %>
+		<% if type.to_s == "notice" %>
+			<div class="alert alert-success">
+		<% else %>
+			<div class="alert alert-error">
 		<% end %>
-<div class="row">
-  <div class="one centered half">
+			<button class="close" data-dismiss="alert">&times;</button>
+			<%= message %>
+		</div>
 
-<%= yield %>
+	<% end %>
 
-	</div>
+	<%= yield %>
 </div>
-
-	</div>
-</div>
+<p class="text-center">&copy;2013 The Chellinsky Group, LLC | All Rights Reserved</p>
 </body>
 </html>
