@@ -10,18 +10,15 @@
 <div class="navbar navbar-fixed-top">
 	<div class="navbar-inner">
 		<div class="container">
-			<ul class="nav">
-				<li>
-					<span><%= link_to "Game-A-Cert", root_path, { :class=>"brand" } %></span>
-				</li>
-			</ul>
+			<%= link_to "Game-A-Cert", root_path, { :class=>"brand" } %>
 			<ul class="nav pull-right">
 					<% if user_signed_in? %>
 					<li class="dropdown">
-						<%= link_to raw("<i class='icon-user'></i>") + current_user.profile_name, profile_page_path(:id => current_user.profile_name), { :class=>"dropdown-toggle", :"data-toggle"=>"dropdown" } %>
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class='icon-user'></i> User Information<b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li><a href="#">Dashboard</a></li>
-							<li><a href="#">Accomplishments</a></li>
+							<li><a href="#">Prizes</a></li>
+							<li><%= link_to "View Profile", profile_page_path(:id => current_user.profile_name) %></li>
 							<li><%= link_to "Settings", edit_user_path %></li>
 						</ul>
 					<% else %>
@@ -30,16 +27,18 @@
 					<% end %>
 				</li>
 				<li class="dropdown">
-					<a class="dropdown-toggle" id="gamesLabel" role="button" data-toggle="dropdown" href="#"><i class="icon-road"></i> Games<b class="caret"></b></a>
-					<ul class="dropdown-menu" role="menu" aria-labelledby="gamesLabel">
-						<li role="presentation">
-							<a role="menuitem" tabindex="-1" href="#">Current Games</a>
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-road"></i> Games<b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<% if user_signed_in? %>
+						<li>
+							<a href="#">Current Games</a>
 						</li>
-						<li role="presentation">
-							<a role="menuitem" tabindex="-1" href="#">Finished Games</a>
+						<li>
+							<a href="#">Finished Games</a>
 						</li>
-						<li role="presentation">
-							<a role="menuitem" tabindex="-1" href="#">Available Games</a>
+						<% end %>
+						<li>
+							<a href="#">Available Games</a>
 						</li>
 					</ul>
 				</li>
