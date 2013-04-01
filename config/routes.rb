@@ -1,4 +1,10 @@
 Gameacert::Application.routes.draw do
+  
+  resources :games do
+    resources :spaces
+  end
+
+
   get "profiles/show"
 
   devise_for :users

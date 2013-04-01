@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @space.name %>
+</p>
+
+<p>
+  <b>Topic:</b>
+  <%= @space.topic %>
+</p>
+
+<p>
+  <b>Detail:</b>
+  <%= @space.detail %>
+</p>
+
+<p>
+  <b>Gameid:</b>
+  <%= @space.gameid %>
+</p>
+
+<p>
+  <b>Gameorder:</b>
+  <%= @space.gameorder %>
+</p>
+
+
+<%= link_to 'Edit', edit_space_path(@space) %> |
+<%= link_to 'Back', spaces_path %>

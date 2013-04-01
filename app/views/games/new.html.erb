@@ -1,0 +1,9 @@
+<% if user_signed_in? %>
+	<h1>New game</h1>
+
+	<%= render 'form' %>
+
+	<%= link_to 'Back', games_path %>
+<% else %>
+	<p>You must be logged in as an administrator to make a new game</p>
+<% end %>
