@@ -1,20 +1,39 @@
 <p id="notice"><%= notice %></p>
+<% if user_signed_in? %>
+	<p>
+	  <b>Name:</b>
+	  <%= @game.name %>
+	</p>
 
-<p>
-  <b>Name:</b>
-  <%= @game.name %>
-</p>
+	<p>
+	  <b>Description:</b>
+	  <%= @game.description %>
+	</p>
 
-<p>
-  <b>Description:</b>
-  <%= @game.description %>
-</p>
+	<p>
+	  <b>Gamepic:</b>
+	  <%= @game.gamepic %>
+	</p>
 
-<p>
-  <b>Gamepic:</b>
-  <%= @game.gamepic %>
-</p>
+	<h2>Spaces</h2>
+	<div class='row'>
+		<div class='span2'><strong>Name: </strong></div>
+		<div class='span3'><strong>Topic: </strong></div>
+		<div class='span6'><strong>Detail: </strong></div>
+		<div class='span1'><strong>Game Order: </strong></div>
+	</div>
+	<% @game.spaces.each do |space| %>
+		<div class='row'>
+			<div class='span2'><%= space.name %></div>
+			<div class='span3'><%= space.topic %></div>
+			<div class='span6'><%= space.detail %></div>
+			<div class='span1'><%= space.gameorder %></div>
+		</div>
+	<% end %>
 
 
-<%= link_to 'Edit', edit_game_path(@game) %> |
+	<%= link_to 'Edit', edit_game_path(@game) %> |
+<% else %>
+	<p>Please <%= link_to 'register', register_path %> or <%= link_to 'log in', login_path %> to play a game</p>
+<% end %>
 <%= link_to 'Back', games_path %>

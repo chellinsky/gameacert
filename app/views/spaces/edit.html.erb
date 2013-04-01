@@ -1,6 +1,6 @@
-<h1>Editing space</h1>
+<h1>Edit a Space</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @space %> |
-<%= link_to 'Back', spaces_path %>
+<%= link_to 'Show', game_space_path(@game, @space) %> |
+<%= link_to 'Back', game_spaces_path %>

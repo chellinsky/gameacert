@@ -17,7 +17,7 @@
 
 <p>
   <b>Gameid:</b>
-  <%= @space.gameid %>
+  <%= @space.game_id %>
 </p>
 
 <p>
@@ -26,5 +26,5 @@
 </p>
 
 
-<%= link_to 'Edit', edit_space_path(@space) %> |
-<%= link_to 'Back', spaces_path %>
+<%= link_to 'Edit', edit_game_space_path(@game, @space) %> |
+<%= link_to 'Back', game_spaces_path(@game) %>

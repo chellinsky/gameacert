@@ -1,20 +1,18 @@
 <h1 class="text-center">Available Games</h1>
 
 <div class="row">
-  <div class="span2"><h3>Name</h3></div>
-  <div class="span4"><h3>Description</h3></div>
-  <div class="span3"><h3>Gamepic</h3></div>
+  <div class="span3"><h3>Name</h3></div>
+  <div class="span6"><h3>Description</h3></div>
   <div class="span1"></div>
   <div class="span1"></div>
 </div>
 
 <% @games.each do |game| %>
   <div class="row well">
-    <div class="span2"><%= game.name %></div>
-    <div class="span4"><%= game.description %></div>
-    <div class="span3"><%= game.gamepic %></div>
+    <div class="span3"><%= game.name %></div>
+    <div class="span6"><%= game.description %></div>
+    <div class="span1"><%= link_to 'Play Game', game %></div>
     <% if user_signed_in? %>
-      <div class="span1"><%= link_to 'Show', game %></div>
       <div class="span1"><%= link_to 'Edit', edit_game_path(game) %></div>
     <% end %>
   </div>
