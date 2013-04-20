@@ -1,9 +1,14 @@
 Gameacert::Application.routes.draw do
   
   resources :games do
-    resources :spaces
+    resources :spaces, :name_prefix => "game_"
   end
 
+  resources :spaces do
+    resources :tasks, :name_prefix => "space_"
+  end
+
+  resources :tasks
 
   get "profiles/show"
 
