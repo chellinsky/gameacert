@@ -19,22 +19,6 @@
 		</div>
 	<% end %>
 
-	<h3>Add a Space</h3>
-	<%= simple_form_for([@game, @game.spaces.build], :html => {:class => 'form-horizontal'}) do |f| %>
-	  <%= f.error_notification %>
-
-	  <div class="form-inputs">
-	    <%= f.input :name, :input_html => { :class => 'span9' } %>
-	    <%= f.input :topic, :input_html => { :class => 'span9' } %>
-	    <%= f.input :detail, :input_html => { :class => 'span9' } %>
-	    <%= f.input :gameorder, :input_html => { :class => 'span9' }, :hint => 'This is the order in which spaces will appear in linear games' %>
-	  </div>
-
-	  <div class="form-actions">
-	    <%= f.button :submit %>
-	  </div>
-	<% end %>
-
 
 	<%= link_to 'Show', @game %> |
 	<%= link_to 'Back', games_path %>

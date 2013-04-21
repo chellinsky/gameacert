@@ -47,7 +47,7 @@ class SpacesController < ApplicationController
 
     @space = @game.spaces.create(params[:space])
 
-    redirect_to edit_game_path(@game)
+    redirect_to game_spaces_path(@game)
 
 #    @space = Space.new(params[:space])
 

@@ -15,6 +15,9 @@
 	  <%= @game.gamepic %>
 	</p>
 
+	<%= link_to 'Edit', edit_game_path(@game) %> |
+	<%= link_to 'Back', games_path %>
+
 	<h2>Spaces</h2>
 	<div class='row'>
 		<div class='span2'><strong>Name: </strong></div>
@@ -30,10 +33,9 @@
 			<div class='span1'><%= space.gameorder %></div>
 		</div>
 	<% end %>
+	<p><%= link_to 'New Space', new_game_space_path(@game) %> | <%= link_to 'Edit Spaces', game_spaces_path(@game) %></p>
 
 
-	<%= link_to 'Edit', edit_game_path(@game) %> |
 <% else %>
 	<p>Please <%= link_to 'register', register_path %> or <%= link_to 'log in', login_path %> to play a game</p>
 <% end %>
-<%= link_to 'Back', games_path %>
