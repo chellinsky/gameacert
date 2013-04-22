@@ -1,31 +1,43 @@
-<h1>List Tasks</h1>
+<div class="row">
+  <p id="notice"><%= notice %></p>
+</div>
+<% if user_signed_in? %>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Contents</th>
-    <th>Space ID</th>
-    <th>Training Type</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+    <div class="row">
+        <div class="span12">
+            <div class="well">
+                <h2 class="text-center">Task List for <%= @space.name %></h2>
+            </div>
+        </div>
+    </div>
 
-<% @space.tasks.each do |task| %>
-  <tr>
-    <td><%= task.name %></td>
-    <td><%= task.description %></td>
-    <td><%= task.contents %></td>
-    <td><%= task.space_id %></td>
-    <td><%= task.trainingtype %></td>
-    <td><%= link_to 'Show', space_task_path(@space, task) %></td>
-    <td><%= link_to 'Edit', edit_space_task_path(@space, task) %></td>
-    <td><%= link_to 'Destroy', space_task_path(@space, task), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+    <div class="row">
+        <div class="span12">
+            <table class="table table-hover">
+                <tr>
+                    <th>Task Name</th>
+                    <th>Learning Objectives</th>
+                    <th>Type</th>
+                    <th></th>
+                </tr>
 
-<br />
+                <% @space.tasks.each do |task| %>
+                    <tr>
+                        <td><%= link_to task.name, space_task_path(@space, task) %></td>
+                        <td><%= task.description %></td>
+                        <td><%= task.trainingtype %></td>
+                        <td><%= link_to 'Destroy', space_task_path(@space, task), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                    </tr>
+                <% end %>
+            </table>
+        </div>
+    </div>
 
-<%= link_to 'New Task', new_space_task_path %> | <%= link_to 'Back to Space', game_space_path(@space.game_id, @space) %>
+    <div class="span12">
+        <%= link_to 'New Task', new_space_task_path %> | <%= link_to 'Back to Space', game_space_path(@space.game_id, @space) %>
+    </div>
+  
+  <% else %>
+    <p>Please <%= link_to 'register', register_path %> or <%= link_to 'log in', login_path %> to play a game</p>
+  <% end %>
+</div>

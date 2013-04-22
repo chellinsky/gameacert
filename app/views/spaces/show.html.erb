@@ -39,7 +39,7 @@
   </div>
   <% @space.tasks.each do |task| %>
     <div class='row'>
-      <div class='span2'><%= task.name %></div>
+      <div class='span2'><%= link_to task.name, space_task_path(task.space_id, task.id) %></div>
       <div class='span3'><%= task.contents %></div>
       <div class='span6'><%= task.description %></div>
       <div class='span1'><%= task.trainingtype %></div>

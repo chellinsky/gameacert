@@ -27,7 +27,7 @@
 	</div>
 	<% @game.spaces.each do |space| %>
 		<div class='row'>
-			<div class='span2'><%= space.name %></div>
+			<div class='span2'><%= link_to space.name, game_space_path(space.game_id, space.id) %></div>
 			<div class='span3'><%= space.topic %></div>
 			<div class='span6'><%= space.detail %></div>
 			<div class='span1'><%= space.gameorder %></div>

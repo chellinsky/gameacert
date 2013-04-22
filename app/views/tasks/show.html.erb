@@ -1,34 +1,40 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <p id="notice"><%= notice %></p>
+</div>
 <% if user_signed_in? %>
 
-  <p>
-    <b>Name:</b>
-    <%= @task.name %>
-  </p>
+  <div class="row">
+    <div class="span12">
+      <div class="well">
+        <h2 class="text-center"><%= @task.name %></h2>
+      </div>
+    </div>
+  </div>
 
-  <p>
-    <b>Description:</b>
-    <%= @task.description %>
-  </p>
+  <div class="row">
+    <div class="span12">
+      <div id="legend">
+        <p>Render the content here....</p>
+        <p>Placeholder text: <%= @task.contents %>
+      </div>
+    </div>
+  </div>
 
-  <p>
-    <b>Contents:</b>
-    <%= @task.contents %>
-  </p>
+  <div class="row" id="padtop">
+    <div class="span8">
+      <div class="well">
+        <h4>Learning Objectives:</h4>
+        <p><%= @task.description %></p>
+      </div>
+    </div>
+    <div class="span4" id="padtop">
+      <p class="text-center"><a href="#" class="btn btn-primary btn-large">Record Completion</a></p>
+    </div>
+  </div>
 
-  <p>
-    <b>Space ID:</b>
-    <%= @task.space_id %>
-  </p>
-
-  <p>
-    <b>Type:</b>
-    <%= @task.trainingtype %>
-  </p>
-
-
-  <%= link_to 'Edit', edit_space_task_path(@space, @task) %> |
-  <%= link_to 'Back', space_tasks_path(@space) %>
+  <div class="span12">
+    <%= link_to 'Edit', edit_space_task_path(@space, @task) %> | <%= link_to 'Back to Task List', space_tasks_path(@space) %>
+  </div>
 
 <% else %>
   <p>Please <%= link_to 'register', register_path %> or <%= link_to 'log in', login_path %> to play a game</p>
