@@ -1,52 +1,54 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <p id="notice"><%= notice %></p>
+</div>
 <% if user_signed_in? %>
 
-  <p>
-    <b>Name:</b>
-    <%= @space.name %>
-  </p>
-
-  <p>
-    <b>Topic:</b>
-    <%= @space.topic %>
-  </p>
-
-  <p>
-    <b>Detail:</b>
-    <%= @space.detail %>
-  </p>
-
-  <p>
-    <b>Gameid:</b>
-    <%= @space.game_id %>
-  </p>
-
-  <p>
-    <b>Gameorder:</b>
-    <%= @space.gameorder %>
-  </p>
-
-
-  <%= link_to 'Edit', edit_game_space_path(@game, @space) %> |
-  <%= link_to 'Back', game_spaces_path(@game) %>
-
-  <h2>Tasks</h2>
-  <div class='row'>
-    <div class='span2'><strong>Name: </strong></div>
-    <div class='span3'><strong>Contents: </strong></div>
-    <div class='span6'><strong>Description: </strong></div>
-    <div class='span1'><strong>Type: </strong></div>
-  </div>
-  <% @space.tasks.each do |task| %>
-    <div class='row'>
-      <div class='span2'><%= link_to task.name, space_task_path(task.space_id, task.id) %></div>
-      <div class='span3'><%= task.contents %></div>
-      <div class='span6'><%= task.description %></div>
-      <div class='span1'><%= task.trainingtype %></div>
+  <div class="row">
+    <div class="span12">
+      <div class="well">
+        <h2 class="text-center"><%= @space.name %></h2>
+      </div>
     </div>
-  <% end %>
+  </div>
 
-  <%= link_to 'New Task', new_space_task_path(@space) %> | <%= link_to 'Edit Tasks', space_tasks_path(@space) %>
+  <div class="row">
+    <div class="span12">
+      <p><%= @space.detail %></p>
+    </div>
+  </div>
+
+  <div class="span12">
+    <%= link_to 'Edit', edit_game_space_path(@game, @space) %> | <%= link_to 'Back to Space List', game_spaces_path(@game) %>
+  </div>
+
+  <div class="row" id="padtop">
+    <div class="span12">
+      <h4>Tasks for <%= @space.name %></h4>
+    </div>
+  </div>
+
+  <div class='row'>
+    <div class="span12">
+      <table class="table table-hover">
+        <tr>
+            <th>Task Name</th>
+            <th>Learning Objectives</th>
+            <th>Type</th>
+        </tr>
+        <% @space.tasks.each do |task| %>
+            <tr>
+                <td><%= link_to task.name, space_task_path(@space, task) %></td>
+                <td><%= task.description %></td>
+                <td><%= task.trainingtype %></td>
+            </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+
+  <div class="span12">
+    <%= link_to 'New Task', new_space_task_path(@space) %> | <%= link_to 'Edit Tasks', space_tasks_path(@space) %>
+  </div>
 
 <% else %>
   <p>Please <%= link_to 'register', register_path %> or <%= link_to 'log in', login_path %> to play a game</p>

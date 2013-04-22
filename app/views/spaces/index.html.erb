@@ -1,31 +1,41 @@
-<h1>List Spaces</h1>
+<div class="row">
+    <p id="notice"><%= notice %></p>
+</div>
+<% if user_signed_in? %>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Topic</th>
-    <th>Detail</th>
-    <th>Game ID</th>
-    <th>Game Order</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+    <div class="row">
+        <div class="span12">
+            <div class="well">
+                <h2 class="text-center">Space List for <%= @game.name %></h2>
+            </div>
+        </div>
+    </div>
 
-<% @game.spaces.each do |space| %>
-  <tr>
-    <td><%= space.name %></td>
-    <td><%= space.topic %></td>
-    <td><%= space.detail %></td>
-    <td><%= space.game_id %></td>
-    <td><%= space.gameorder %></td>
-    <td><%= link_to 'Show', game_space_path(@game, space) %></td>
-    <td><%= link_to 'Edit', edit_game_space_path(@game, space) %></td>
-    <td><%= link_to 'Destroy', game_space_path(@game, space), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+    <div class="row">
+        <div class="span12">
+            <table class="table table-hover">
+                <tr>
+                    <th>Space Name</th>
+                    <th>Topic</th>
+                    <th></th>
+                </tr>
+
+                <% @game.spaces.each do |space| %>
+                    <tr>
+                        <td><%= link_to space.name, game_space_path(@game, space) %></td>
+                        <td><%= space.topic %></td>
+                        <td><%= link_to 'Destroy', game_space_path(@game, space), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                    </tr>
+                <% end %>
+            </table>
+        </div>
+    </div>
+
+    <div class="span12">
+        <%= link_to 'New Space', new_game_space_path %> | <%= link_to 'Back to Game', game_path(@game) %>
+    </div>
+
+<% else %>
+    <p>Please <%= link_to 'register', register_path %> or <%= link_to 'log in', login_path %> to play a game</p>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Space', new_game_space_path %> | <%= link_to 'Back to Game', game_path(@game) %>
+</div>
