@@ -1,24 +1,33 @@
-<h1 class="text-center">Available Games</h1>
-
 <div class="row">
-  <div class="span3"><h3>Name</h3></div>
-  <div class="span6"><h3>Description</h3></div>
-  <div class="span1"></div>
-  <div class="span1"></div>
+    <p id="notice"><%= notice %></p>
+</div>
+<div class="row">
+  <div class="span12">
+    <div class="well">
+      <h2 class="text-center">Available Games</h2>
+    </div>
+  </div>
 </div>
 
-<% @games.each do |game| %>
-  <div class="row well">
-    <div class="span3"><%= game.name %></div>
-    <div class="span6"><%= game.description %></div>
-    <div class="span1"><%= link_to 'Play Game', game %></div>
-    <% if user_signed_in? %>
-      <div class="span1"><%= link_to 'Edit', edit_game_path(game) %></div>
-    <% end %>
+<div class="row">
+  <div class="span12">
+    <table class="table table-hover">
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th></th>
+      </tr>
+      <% @games.each do |game| %>
+        <tr>
+          <td><%= game.name %></td>
+          <td><%= game.description %></td>
+          <td><%= link_to 'Play Game', game, :class => "btn btn-primary" %></td>
+        </tr>
+      <% end %>
+    </table>
   </div>
-<% end %>
+</div>
 
-<br />
 <% if user_signed_in? %>
-  <%= link_to 'New Game', new_game_path %>
+  <div class="span12"><%= link_to 'New Game', new_game_path %></div>
 <% end %>
