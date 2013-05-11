@@ -6,8 +6,11 @@ gem 'rails', '3.2.13'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'devise'
+gem 'cancan'
 gem 'simple_form'
 gem 'country_select'
+gem 'rails_admin'
+gem 'survey', :git => 'git://github.com/runtimerevolution/survey.git'
 
 group :development, :test do
 	gem 'sqlite3'

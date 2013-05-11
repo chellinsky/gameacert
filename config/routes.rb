@@ -1,5 +1,15 @@
 Gameacert::Application.routes.draw do
+
+  namespace :quizzes do
+    resources :surveys
+    resources :attempts, :only => [:new, :create, :show]
+  end
+
   
+  devise_for :users
+
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+
   resources :games do
     resources :spaces, :name_prefix => "game_"
   end
@@ -11,8 +21,6 @@ Gameacert::Application.routes.draw do
   resources :tasks
 
   get "profiles/show"
-
-  devise_for :users
 
   get "home/index"
 

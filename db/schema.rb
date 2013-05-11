@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130420192335) do
+ActiveRecord::Schema.define(:version => 20130510225443) do
 
   create_table "games", :force => true do |t|
     t.string   "name"
@@ -22,6 +22,19 @@ ActiveRecord::Schema.define(:version => 20130420192335) do
     t.string   "short_name"
   end
 
+  create_table "rails_admin_histories", :force => true do |t|
+    t.text     "message"
+    t.string   "username"
+    t.integer  "item"
+    t.string   "table"
+    t.integer  "month",      :limit => 2
+    t.integer  "year",       :limit => 5
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+  end
+
+  add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
+
   create_table "spaces", :force => true do |t|
     t.string   "name"
     t.string   "topic"
@@ -30,6 +43,49 @@ ActiveRecord::Schema.define(:version => 20130420192335) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "game_id"
+  end
+
+  create_table "survey_answers", :force => true do |t|
+    t.integer  "attempt_id"
+    t.integer  "question_id"
+    t.integer  "option_id"
+    t.boolean  "correct"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "survey_attempts", :force => true do |t|
+    t.integer "participant_id"
+    t.string  "participant_type"
+    t.integer "survey_id"
+    t.boolean "winner"
+    t.integer "score"
+  end
+
+  create_table "survey_options", :force => true do |t|
+    t.integer  "question_id"
+    t.integer  "weight",      :default => 0
+    t.string   "text"
+    t.boolean  "correct"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
+
+  create_table "survey_questions", :force => true do |t|
+    t.integer  "survey_id"
+    t.string   "text"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "survey_surveys", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "attempts_number", :default => 0
+    t.boolean  "finished",        :default => false
+    t.boolean  "active",          :default => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
   end
 
   create_table "tasks", :force => true do |t|
@@ -65,6 +121,7 @@ ActiveRecord::Schema.define(:version => 20130420192335) do
     t.string   "facebook_url"
     t.string   "twitter_url"
     t.text     "expertise"
+    t.string   "role"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

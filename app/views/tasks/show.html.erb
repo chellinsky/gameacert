@@ -13,8 +13,16 @@
 
   <div class="row">
     <div class="span12">
-      <p>Render the content here....</p>
-      <p>Placeholder text: <%= @task.contents %></p>
+      <p>Task Description: <%= @task.description %></p>
+      <% if @task.trainingtype == 0 %>
+        <%= @survey = Survey::Survey.find(2) %>
+        <%= @survey.name %>
+        <%= link_to 'Take Quiz', new_quizzes_attempt_path %>
+      <% elsif @task.trainingtype == 1  %>
+        <p>This is a video task</p>
+      <% else %>
+        <p>This is a task of an unkown type</p>
+      <% end %>
     </div>
   </div>
 
