@@ -15,9 +15,28 @@
     <div class="span12">
       <p>Task Description: <%= @task.description %></p>
       <% if @task.trainingtype == 0 %>
-        <%= @survey = Survey::Survey.find(2) %>
-        <%= @survey.name %>
-        <%= link_to 'Take Quiz', new_quizzes_attempt_path %>
+        <% @survey =  Survey::Survey.active.first %>
+        <% @attempt = @survey.attempts.new %>
+        <% @attempt.answers.build %>
+        <% @participant = current_user # you have to decide what to do here %>
+        <%= simple_form_for(@attempt, :url => quizzes_attempts_path) do |f| %>
+          <%= f.fields_for :answers do |builder| %>
+            <ul>
+              <% @survey.questions.each_with_index do |question, index| %>
+                <li>
+                  <p><%= question.text %></p>
+                  <%= hidden_field_tag "survey_attempt[answers_attributes][#{index}][question_id]", question.id %>
+                  <% question.options.each do |option| %>
+                    <%= check_box_tag "survey_attempt[answers_attributes][#{index}][option_id]", option.id %>
+                    <%= option.text %> <br/ >
+                  <% end -%>
+                </li>
+              <% end -%>
+            </ul>
+          <% end -%>
+        <%= f.submit "Submit" %>
+      <% end -%>
+
       <% elsif @task.trainingtype == 1  %>
         <p>This is a video task</p>
       <% else %>

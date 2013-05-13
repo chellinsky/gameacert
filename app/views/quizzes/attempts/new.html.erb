@@ -1,3 +1,9 @@
+<% quiz = Survey::Survey.active.first %>
+<% quiz_answers = quiz.attempts %>
+<%= puts quiz_answers.for_participant(@participant).high_score %>
+  <p>Display Quiz Results </p>
+  <p>Ask if they want to retake the quiz</p>
+  <p>Ask if they want to continue</p>
 <% if @survey.avaliable_for_participant?(@participant) %>
   <%= render 'form' %>
 <% else %>
