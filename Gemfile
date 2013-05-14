@@ -11,6 +11,7 @@ gem 'simple_form'
 gem 'country_select'
 gem 'rails_admin'
 gem 'survey', :git => 'git://github.com/runtimerevolution/survey.git'
+gem 'paper_trail', '~> 2'
 
 group :development, :test do
 	gem 'sqlite3'

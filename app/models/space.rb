@@ -3,4 +3,6 @@ class Space < ActiveRecord::Base
 
   belongs_to :game
   has_many :tasks
+  has_paper_trail
+  
 end

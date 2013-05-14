@@ -5,4 +5,6 @@ class Game < ActiveRecord::Base
   validates_uniqueness_of :name, :short_name
 
   has_many :spaces
+  has_paper_trail
+  
 end
