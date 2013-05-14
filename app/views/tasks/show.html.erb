@@ -13,7 +13,6 @@
 
   <div class="row">
     <div class="span12">
-      <p>Task Description: <%= @task.description %></p>
       <% if @task.trainingtype == 0 %>
         <% @survey =  Survey::Survey.active.first %>
         <% @attempt = @survey.attempts.new %>
@@ -38,7 +37,17 @@
       <% end -%>
 
       <% elsif @task.trainingtype == 1  %>
-        <p>This is a video task</p>
+        <% content_for :head do %>
+          <script src="http://jwpsrv.com/library/ZhA1YKsUEeK9ACIACpYGxA.js"></script>
+        <% end %>
+        <div id='my-video'></div>
+        <script type='text/javascript'>
+          jwplayer('my-video').setup({
+            file: "<%= @task.contents %>",
+            width: '640',
+            height: '360'
+          });
+        </script>
       <% else %>
         <p>This is a task of an unkown type</p>
       <% end %>
@@ -53,7 +62,7 @@
       </div>
     </div>
     <div class="span4" id="padtop">
-      <p class="text-center"><a href="#" class="btn btn-primary btn-large">Record Completion</a></p>
+      <p class="text-center"><%= link_to 'Record Completion', space_tasks_path(@space), :class => 'btn btn-primary btn-large' %></p>
     </div>
   </div>
 

@@ -2,6 +2,9 @@ class User < ActiveRecord::Base
 
   has_surveys
 
+  has_many :completions
+  has_many :completions, through: :completions
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
