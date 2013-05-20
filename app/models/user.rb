@@ -2,8 +2,8 @@ class User < ActiveRecord::Base
 
   has_surveys
 
-  has_many :completions
-  has_many :completions, through: :completions
+  has_many :user_tasks
+  has_many :tasks, through: :user_tasks
 
   has_paper_trail
 

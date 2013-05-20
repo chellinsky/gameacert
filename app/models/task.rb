@@ -1,8 +1,8 @@
 class Task < ActiveRecord::Base
   belongs_to :space
 
-  has_many :completions
-  has_many :users, through: :completions
+  has_many :user_tasks
+  has_many :users, through: :user_tasks
 
   has_paper_trail
 

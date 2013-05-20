@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130514095910) do
+ActiveRecord::Schema.define(:version => 20130520202316) do
 
   create_table "games", :force => true do |t|
     t.string   "name"
@@ -99,6 +99,15 @@ ActiveRecord::Schema.define(:version => 20130514095910) do
   end
 
   add_index "tasks", ["space_id"], :name => "index_tasks_on_space_id"
+
+  create_table "user_tasks", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "task_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "user_tasks", ["user_id", "task_id"], :name => "index_user_tasks_on_user_id_and_task_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
