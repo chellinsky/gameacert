@@ -12,6 +12,7 @@ gem 'country_select'
 gem 'rails_admin'
 gem 'survey', :git => 'git://github.com/runtimerevolution/survey.git'
 gem 'paper_trail', '~> 2'
+gem 'postmark-rails'
 
 group :test do
 	gem 'shoulda'
