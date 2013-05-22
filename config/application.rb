@@ -64,7 +64,7 @@ module Gameacert
     # config.action_mailer.delivery_method   = :postmark
     # config.action_mailer.postmark_settings = { :api_key => '6ef3802d-4498-48e3-9ef2-bad113e69f86' }
 
-    config.action_mailer.default_url_options = { :host => 'smtp.sendgrid.net' } 
+    config.action_mailer.default_url_options = { :host => 'calm-beyond-6531.herokuapp.com' } 
     config.action_mailer.delivery_method = :smtp 
     config.action_mailer.perform_deliveries = true 
     config.action_mailer.raise_delivery_errors = true 
