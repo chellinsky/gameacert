@@ -2,21 +2,21 @@
 	<div class="span9" id="actions">
 		<h2>Welcome!  It's Your Move...</h2>
 		<% if user_signed_in? %>
-			<p>Here are the next games you should play....</p>
-			<p>Here are some other popular games you could start....</p>
+			<p>Here are the next games you should play: [Insert list of next games in a progression here.]</p>
+			<p>Here are some other popular games you could start: [Insert a list of popular games here.].</p>
 		<% else %>
-			<p>Insert some catchy marketing lines here.</p>
+			<p>[Insert some catchy marketing lines here.]</p>
 			<p>Want to learn more about Game-A-Cert?  Click here for an in depth look at how games can help you enhance your professional knowledge.</p>
 			<p>If you are ready to start your first game, register <%= link_to "here", register_path %>.</p>
 		<% end %>
 	</div>
 	<div class="span3" id="badges">
 		<div class="well">
-			<h3 class="text-center">Prizes</h3>
+			<h3 class="text-center">Certifiable Badges</h3>
 			<% if user_signed_in? %>
 				<p>After you earn prizes by playing games or verifying certifications, they will show up here.</p>
 			<% else %>
-				<p>Do you want to start earning virtual prizes for learning and demonstrating your professional knowledge?<br>If you do, register <%= link_to "here", register_path %>!</p>
+				<p>Do you want to start earning virtual badges for learning and demonstrating your professional knowledge?<br>If you do, register <%= link_to "here", register_path %>!</p>
 				<p>If you are already registered, log in <%= link_to "here", login_path %>.</p>
 			<% end %>
 		</div>
@@ -25,25 +25,24 @@
 <div class="row">
 	<div class="span12">
 		<div id="featuredstory">
-			<h1 class="text-center">Featured Article From the Blog Title</h1>
-			<img src="http://placekitten.com/g/300/400" class="pull-left" id="featurearticleimg" />
-			<p class="lead">The main story (a picture and text or video, etc.) goes here.  It will update weekly.</p>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eget felis et purus faucibus convallis. Suspendisse nec ligula ac purus aliquet suscipit et vitae mauris. Nullam porttitor diam dapibus turpis lacinia pulvinar. Vestibulum molestie sagittis eros, in semper sem suscipit id. Maecenas id est eget massa tincidunt semper. Nunc mollis arcu a nulla pulvinar adipiscing quis non lacus. Maecenas non nibh velit, vitae euismod lectus. Vestibulum nunc massa, egestas vitae malesuada in, vehicula sit amet tellus. Donec sed tortor augue. Donec sapien enim, porttitor in ornare a, cursus posuere nibh. Integer a turpis ac massa sodales rhoncus sed vel sapien.</p>
-			<p>Praesent vulputate hendrerit laoreet. Curabitur hendrerit quam elit. Morbi ut tellus diam, vel luctus nulla. Aliquam rhoncus, erat at auctor tempor, eros orci aliquam mi, vitae laoreet tellus tellus at neque. Maecenas nec bibendum nisl. Nullam sed sagittis velit. Maecenas vulputate tempus sem sed malesuada. Donec ligula tortor, facilisis sed tempor quis, posuere at lacus. Nam vehicula, nulla ac molestie euismod, leo arcu hendrerit purus, id sodales velit nulla vel nisi. Quisque vitae risus neque, vitae suscipit est. Vivamus eget congue nisl.</p>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eget felis et purus faucibus convallis. Suspendisse nec ligula ac purus aliquet suscipit et vitae mauris. Nullam porttitor diam dapibus turpis lacinia pulvinar. Vestibulum molestie sagittis eros, in semper sem suscipit id. Maecenas id est eget massa tincidunt semper. Nunc mollis arcu a nulla pulvinar adipiscing quis non lacus. Maecenas non nibh velit, vitae euismod lectus. Vestibulum nunc massa, egestas vitae malesuada in, vehicula sit amet tellus. Donec sed tortor augue. Donec sapien enim, porttitor in ornare a, cursus posuere nibh. Integer a turpis ac massa sodales rhoncus sed vel sapien.</p>
-			<p>Praesent vulputate hendrerit laoreet. Curabitur hendrerit quam elit. Morbi ut tellus diam, vel luctus nulla. Aliquam rhoncus, erat at auctor tempor, eros orci aliquam mi, vitae laoreet tellus tellus at neque. Maecenas nec bibendum nisl. Nullam sed sagittis velit. Maecenas vulputate tempus sem sed malesuada. Donec ligula tortor, facilisis sed tempor quis, posuere at lacus. Nam vehicula, nulla ac molestie euismod, leo arcu hendrerit purus, id sodales velit nulla vel nisi. Quisque vitae risus neque, vitae suscipit est. Vivamus eget congue nisl.</p>
+			<h1 class="text-center">Motivation Behind Game-A-Cert</h1>
+			<img src="http://placekitten.com/g/200/275" class="pull-left" id="featurearticleimg" />
+			<p class="lead">Certification training and exam preparation should be more than listening to a 36-hour lecture.</p>
+			<p>Too often, preparing for a certification exam means spending a week listening to an "expert" drone on about a topic.  The training might include some activities or practice tests, but it does not inspire deeper learning or provide an easy method to demonstrate the extra value the course brings an employer or client.  Game-A-Cert plans to change this process by using games to simulate real-world situations.  These situations will let gamers learn test material interactively.  At the end of the game, participants will earn a badge they can link to their LinkedIn profile or other social media</p>
+			<p>Beyond initial certification training, the Game-A-Cert will offer continuing learning education across disciplines.  Again, by using a game-centric approach, we will simulate real-world experiences to help gamers advance their professional knowledge.  We will track all continuing learning and work closely with any professional organizations that need participation audits.</p>
 		</div>
 	</div>
 </div>
 <div class="row">
 	<div class="span6" id="aboutbox">
 		<h3>About Game-A-Cert</h3>
-		<p class="lead">Include an overview of the philosophy of training, links to example content, and a link to the full "about us" page.</p>
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eget felis et purus faucibus convallis. Suspendisse nec ligula ac purus aliquet suscipit et vitae mauris. Nullam porttitor diam dapibus turpis lacinia pulvinar. Vestibulum molestie sagittis eros, in semper sem suscipit id. Maecenas id est eget massa tincidunt semper. Nunc mollis arcu a nulla pulvinar adipiscing quis non lacus. Maecenas non nibh velit, vitae euismod lectus. Vestibulum nunc massa, egestas vitae malesuada in, vehicula sit amet tellus. Donec sed tortor augue. Donec sapien enim, porttitor in ornare a, cursus posuere nibh. Integer a turpis ac massa sodales rhoncus sed vel sapien.</p>
+		<p class="lead">We believe people learn best by doing.</p>
+		<p>We structure our learning activities as a series of games that lead participants to mastery over the course of several games.  The beginner's level is usually mostly videos and quizzes to familiarize the gamer with the profession's lexicon and basic concepts.  From there, we move to intermediate and advanced simulations to challenge practitioners to apply the basic skills learned at the beginner's level.  The intermediate and advanced games should be played repeatedly for maximum learning.</p>
+		<p>If you want to see what the experience is like, check out the "Available Games" menu option.  The first space of each game is free to play for registered users.</p>
 	</div>
 	<div class="span6" id="blogbox">
-		<h3>More From the Blog</h3>
-		<p class="lead">Pull in content from the blog here.  Make sure it doesn't duplicate the featured article from above.</p>
+		<h3>From the Blog</h3>
+		<p class="lead">Pull in content from the blog here.</p>
 		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eget felis et purus faucibus convallis. Suspendisse nec ligula ac purus aliquet suscipit et vitae mauris. Nullam porttitor diam dapibus turpis lacinia pulvinar. Vestibulum molestie sagittis eros, in semper sem suscipit id. Maecenas id est eget massa tincidunt semper. Nunc mollis arcu a nulla pulvinar adipiscing quis non lacus. Maecenas non nibh velit, vitae euismod lectus. Vestibulum nunc massa, egestas vitae malesuada in, vehicula sit amet tellus. Donec sed tortor augue. Donec sapien enim, porttitor in ornare a, cursus posuere nibh. Integer a turpis ac massa sodales rhoncus sed vel sapien.</p>
 	</div>
 </div>
