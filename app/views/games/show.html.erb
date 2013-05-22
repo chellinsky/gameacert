@@ -1,5 +1,4 @@
 <p id="notice"><%= notice %></p>
-<% if user_signed_in? %>
 	<p>
 	  <b>Name:</b>
 	  <%= @game.name %>
@@ -36,6 +35,3 @@
 	<p><%= link_to 'New Space', new_game_space_path(@game) %> | <%= link_to 'Edit Spaces', game_spaces_path(@game) %></p>
 
 
-<% else %>
-	<p>Please <%= link_to 'register', register_path %> or <%= link_to 'log in', login_path %> to play a game</p>
-<% end %>

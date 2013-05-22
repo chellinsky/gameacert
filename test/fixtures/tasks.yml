@@ -3,13 +3,13 @@
 one:
   name: MyString
   description: MyText
-  space: 
+  space_id: 2
   trainingtype: 1
   contents: MyText
 
 two:
-  name: MyString
-  description: MyText
-  space: 
-  trainingtype: 1
-  contents: MyText
+  name: MyString2
+  description: MyText2
+  space_id: 1
+  trainingtype: 2
+  contents: MyText2

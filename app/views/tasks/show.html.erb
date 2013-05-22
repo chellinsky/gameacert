@@ -1,8 +1,6 @@
 <div class="row">
   <p id="notice"><%= notice %></p>
 </div>
-<% if user_signed_in? %>
-
   <div class="row">
     <div class="span12">
       <div class="well">
@@ -33,6 +31,7 @@
               <% end -%>
             </ul>
           <% end -%>
+        <%= f.hidden_field :task_id, value: @task %>
         <%= f.submit "Submit" %>
       <% end -%>
 
@@ -62,14 +61,18 @@
       </div>
     </div>
     <div class="span4" id="padtop">
-      <p class="text-center"><%= link_to 'Record Completion', space_tasks_path(@space), :class => 'btn btn-primary btn-large' %></p>
+      <p class="text-center">
+        <% @user_task = UserTask.new %>
+        <%= simple_form_for @user_task, method: :post do |form| %>
+          <div class="form form-action">
+            <%= form.hidden_field :task_id, :value => @task.id %>
+            <%= submit_tag 'Record Completion', :class => 'btn btn-primary btn-large' %>
+          </div>
+        <% end %>
+      </p>
     </div>
   </div>
 
   <div class="span12">
     <%= link_to 'Edit', edit_space_task_path(@space, @task) %> | <%= link_to 'Back to Task List', space_tasks_path(@space) %>
   </div>
-
-<% else %>
-  <p>Please <%= link_to 'register', register_path %> or <%= link_to 'log in', login_path %> to play a game</p>
-<% end %>

@@ -14,11 +14,17 @@ Gameacert::Application.routes.draw do
     resources :spaces, :name_prefix => "game_"
   end
 
-  resources :spaces do
-    resources :tasks, :name_prefix => "space_"
+  authenticate do
+    resources :user_tasks
+    
+    resources :spaces do
+      resources :tasks, :name_prefix => "space_"
+    end
+
+    resources :tasks
+
   end
 
-  resources :tasks
 
   get "profiles/show"
 

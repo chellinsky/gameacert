@@ -1,8 +1,6 @@
 <div class="row">
     <p id="notice"><%= notice %></p>
 </div>
-<% if user_signed_in? %>
-
     <div class="row">
         <div class="span12">
             <div class="well">
@@ -34,8 +32,4 @@
     <div class="span12">
         <%= link_to 'New Space', new_game_space_path %> | <%= link_to 'Back to Game', game_path(@game) %>
     </div>
-
-<% else %>
-    <p>Please <%= link_to 'register', register_path %> or <%= link_to 'log in', login_path %> to play a game</p>
-<% end %>
 </div>
