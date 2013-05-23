@@ -1,6 +1,10 @@
+<% if can? :edit, Space %>
 <h1>Edit a Space</h1>
 
 <%= render 'form' %>
 
 <%= link_to 'Show', game_space_path(@game, @space) %> |
 <%= link_to 'Back', game_spaces_path %>
+<% else %>
+<p>You must be an admininstrator to edit a space</p>
+<% end %>

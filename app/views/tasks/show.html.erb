@@ -74,5 +74,8 @@
   </div>
 
   <div class="span12">
-    <%= link_to 'Edit', edit_space_task_path(@space, @task) %> | <%= link_to 'Back to Task List', space_tasks_path(@space) %>
+    <% if can? :edit, Task %>
+      <%= link_to 'Edit', edit_space_task_path(@space, @task) %> | 
+    <% end %>
+    <%= link_to 'Back to Task List', space_tasks_path(@space) %>
   </div>

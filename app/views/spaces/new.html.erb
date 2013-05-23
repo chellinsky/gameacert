@@ -1,5 +1,9 @@
+<% if can? :new, Space %>
 <h1>New space</h1>
 
 <%= render 'form' %>
 
 <%= link_to 'Back', game_spaces_path %>
+<% else %>
+<p>You must be an administrator to make a new space</p>
+<% end %>

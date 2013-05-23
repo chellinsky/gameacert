@@ -1,4 +1,4 @@
-<% if user_signed_in? %>
+<% if can? :create, Game %>
 	<h1>New game</h1>
 
 	<%= render 'form' %>

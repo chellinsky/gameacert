@@ -15,14 +15,14 @@
                 <tr>
                     <th>Space Name</th>
                     <th>Topic</th>
-                    <th></th>
+                    <% if can? :destroy, Space %><th></th><% end %>
                 </tr>
 
                 <% @game.spaces.each do |space| %>
                     <tr>
                         <td><%= link_to space.name, game_space_path(@game, space) %></td>
                         <td><%= space.topic %></td>
-                        <td><%= link_to 'Destroy', game_space_path(@game, space), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                        <% if can? :destroy, Space %><td><%= link_to 'Destroy', game_space_path(@game, space), method: :delete, data: { confirm: 'Are you sure?' } %></td><% end %>
                     </tr>
                 <% end %>
             </table>
@@ -30,6 +30,9 @@
     </div>
 
     <div class="span12">
-        <%= link_to 'New Space', new_game_space_path %> | <%= link_to 'Back to Game', game_path(@game) %>
+        <% if can? :new, Space %>
+            <%= link_to 'New Space', new_game_space_path %> | 
+        <% end %>
+        <%= link_to 'Back to Game', game_path(@game) %>
     </div>
 </div>

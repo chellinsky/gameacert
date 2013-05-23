@@ -1,5 +1,9 @@
+<% if can? :new, Task %>
 <h1>New Task</h1>
 
 <%= render 'form' %>
 
 <%= link_to 'Back', space_tasks_path %>
+<% else %>
+<p>You must be an administrator to make a new task</p>
+<% end %>

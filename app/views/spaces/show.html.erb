@@ -16,7 +16,9 @@
   </div>
 
   <div class="span12">
-    <%= link_to 'Edit', edit_game_space_path(@game, @space) %> | <%= link_to 'Back to Space List', game_spaces_path(@game) %>
+    <% if can? :edit, Space %>
+      <%= link_to 'Edit', edit_game_space_path(@game, @space) %>
+    <% end %>
   </div>
 
   <div class="row" id="padtop">
@@ -45,5 +47,8 @@
   </div>
 
   <div class="span12">
-    <%= link_to 'New Task', new_space_task_path(@space) %> | <%= link_to 'Edit Tasks', space_tasks_path(@space) %>
+    <% if can? :edit, Task %>
+      <%= link_to 'New Task', new_space_task_path(@space) %> | <%= link_to 'Edit Tasks', space_tasks_path(@space) %> | 
+    <% end %>
+    <%= link_to 'Back to Game', game_path(@game) %>
   </div>

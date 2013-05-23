@@ -1,4 +1,4 @@
-<% if user_signed_in? %>
+<% if can? :edit, Game %>
 	<h1>Overall Game Information</h1>
 
 	<%= render 'form' %>
@@ -23,5 +23,5 @@
 	<%= link_to 'Show', @game %> |
 	<%= link_to 'Back', games_path %>
 <% else %>
-	<p>You must be logged in as an administrator to make a new game</p>
+	<p>You must be logged in as an administrator to edit a game</p>
 <% end %>
