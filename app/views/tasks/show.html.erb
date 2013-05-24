@@ -77,5 +77,5 @@
     <% if can? :edit, Task %>
       <%= link_to 'Edit', edit_space_task_path(@space, @task) %> | 
     <% end %>
-    <%= link_to 'Back to Task List', space_tasks_path(@space) %>
+    <%= link_to 'Back to Space', game_space_path(@space.game_id, @space) %>
   </div>

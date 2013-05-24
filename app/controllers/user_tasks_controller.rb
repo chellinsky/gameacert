@@ -16,10 +16,12 @@ class UserTasksController < ApplicationController
 			@user_task = UserTask.new(task_id: @task.id, user_id: current_user.id)
 			@user_task.save
 			flash[:notice] = "You successfully marked task #{@task.name} complete"
-			redirect_to space_tasks_path(@task.space_id)
+			@space = Space.find(@task.space_id)
+			redirect_to game_space_path(@space.game_id, @space)
 		else
 			flash[:error] = "Task required"
 			redirect_to root_path
 		end
 	end
+
 end

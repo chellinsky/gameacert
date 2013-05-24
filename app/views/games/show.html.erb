@@ -25,14 +25,13 @@
 					<th>Name: </th>
 					<th>Topic: </th>
 					<th>Detail: </th>
-					<th>Game Order: </th>
 				</tr>
-				<% @game.spaces.each do |space| %>
+				<% sortedSpaces = @game.spaces.sort_by &:gameorder
+				for space in sortedSpaces %>
 					<tr>
 						<td><%= link_to space.name, game_space_path(space.game_id, space.id) %></td>
 						<td><%= space.topic %></td>
 						<td><%= space.detail %></td>
-						<td><%= space.gameorder %></td>
 					</tr>
 				<% end %>
 			</table>

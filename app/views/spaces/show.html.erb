@@ -31,15 +31,18 @@
     <div class="span12">
       <table class="table table-hover">
         <tr>
+            <th>&nbsp;</th>
             <th>Task Name</th>
             <th>Learning Objectives</th>
             <th>Type</th>
         </tr>
-        <% @space.tasks.each do |task| %>
+        <% sortedTasks = @space.tasks.sort_by &:order
+        for task in sortedTasks %>
             <tr>
+                <td><% if task.user_ids.include?(current_user.id).present? %><i class='icon-ok'></i><% else %>&nbsp;<% end %></td>
                 <td><%= link_to task.name, space_task_path(@space, task) %></td>
                 <td><%= task.description %></td>
-                <td><%= task.trainingtype %></td>
+                <td><% if task.trainingtype == 0 %>Quiz<% elsif task.trainingtype == 1 %>Video<% else %>Other<% end %></td>
             </tr>
         <% end %>
       </table>

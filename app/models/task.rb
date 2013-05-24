@@ -6,5 +6,6 @@ class Task < ActiveRecord::Base
 
   has_paper_trail
 
-  attr_accessible :contents, :description, :name, :trainingtype
+  attr_accessible :contents, :description, :name, :trainingtype, :order
+
 end

@@ -36,7 +36,7 @@ class TasksController < ApplicationController
 	def create
 		@task = @space.tasks.create(params[:task])
 
-		redirect_to space_tasks_path(@space)
+		redirect_to game_space_path(@space.game_id, @space)
 
 		# put in notices here stating whether the create was successful
 	end
@@ -65,5 +65,4 @@ class TasksController < ApplicationController
 	def load_space
 		@space = Space.find(params[:space_id])
 	end
-
 end
