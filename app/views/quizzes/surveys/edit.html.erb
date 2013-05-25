@@ -1,2 +1,4 @@
+<% if can? :edit, Survey::Survey %>
 <h2>Edit Survey</h2>
 <%= render 'form' %>
+<% end %>

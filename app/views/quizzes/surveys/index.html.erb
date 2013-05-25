@@ -1,3 +1,4 @@
+<% if can? :edit, Survey::Survey %>
 <div class="questionnaires_<%= action_name %>">
 <h1>
     Surveys Index
@@ -12,3 +13,4 @@
   <% end -%>
 </ul>
 </div>
+<% end %>

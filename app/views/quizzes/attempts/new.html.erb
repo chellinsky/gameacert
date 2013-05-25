@@ -1,3 +1,4 @@
+<% if can? :edit, Survey::Attempt %>
 <% quiz = Survey::Survey.active.first %>
 <% quiz_answers = quiz.attempts %>
 <%= puts quiz_answers.for_participant(@participant).high_score %>
@@ -10,4 +11,5 @@
   <p>
     <%= @participant.name %> spent all the possible attempts to answer this Survey
   </p>
-<% end -%>
+<% end %>
+<% end %>
