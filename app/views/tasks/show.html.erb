@@ -1,81 +1,120 @@
 <div class="row">
-  <p id="notice"><%= notice %></p>
-</div>
-  <div class="row">
-    <div class="span12">
-      <div class="well">
-        <h2 class="text-center"><%= @task.name %></h2>
-      </div>
+  <div class="span12">
+    <div class="well">
+      <h2 class="text-center"><%= @task.name %></h2>
     </div>
   </div>
+</div>
 
-  <div class="row">
-    <div class="span12">
-      <% if @task.trainingtype == 0 %>
-        <% @survey =  Survey::Survey.active.first %>
-        <% @attempt = @survey.attempts.new %>
+<div class="row">
+  <div class="span12">
+    <% if @task.trainingtype == 0 %>
+
+      <% @survey =  Survey::Survey.where(:id => @task.contents).first %>
+
+      <% if @attempt = Survey::Attempt.where(:participant_id => current_user.id).first %>
+        <p>Here are your responses:</p>
+        <table class="table">
+          <tr>
+            <th>Your<br />Choice</th>
+            <th>Answer</th>
+            <th>Correct<br />Choice</th>
+          </tr>
+          <% @attempt.answers.build %>
+          <% #@attempt.answers.each do |builder| %>
+              <% @survey.questions.each_with_index do |question, index| %>
+                <tr>
+                  <td colspan='3' id='surveyquestion'><%= question.text %></td>
+                </tr>
+                  <% question.options.each do |option| %>
+                  <tr <% if Survey::Answer.where("option_id = #{option.id} AND attempt_id = #{@attempt.id}").first && option.correct %>id='correctsurveyanswer'<% end %>>
+                    <td><% if Survey::Answer.where("option_id = #{option.id} AND attempt_id = #{@attempt.id}").first %><i class='icon-ok'></i><% end %>&nbsp;</td>
+                    <% @answer %>
+                    <td><%= option.text %></td>
+                    <td><% if option.correct %><i class='icon-ok'></i><% end %>&nbsp;</td>
+                  </tr>
+                  <% end -%>
+              <% end -%>
+          <% #end -%>
+        </table>
+
+        <p>Would you like to take the quiz again?</p>
+
+        <%= simple_form_for(@attempt, :url => quizzes_attempt_path(@attempt), :html => { :method => :delete }) do |f| %>
+          <%= f.hidden_field :task_id, value: @task.id %>
+          <%= f.hidden_field :space_id, value: @task.space_id %>
+          <%= f.submit 'Yes. Clear Answers.', :confirm => 'Are you sure?' %>
+        <% end %>
+
+      <% else %>
+        
+        <% @attempt = Survey::Attempt.new(:survey => @survey, :participant => current_user) %>
         <% @attempt.answers.build %>
-        <% @participant = current_user # you have to decide what to do here %>
+
         <%= simple_form_for(@attempt, :url => quizzes_attempts_path) do |f| %>
           <%= f.fields_for :answers do |builder| %>
-            <ul>
+            <ol>
               <% @survey.questions.each_with_index do |question, index| %>
                 <li>
                   <p><%= question.text %></p>
                   <%= hidden_field_tag "survey_attempt[answers_attributes][#{index}][question_id]", question.id %>
                   <% question.options.each do |option| %>
-                    <%= check_box_tag "survey_attempt[answers_attributes][#{index}][option_id]", option.id %>
+                    <%= radio_button_tag "survey_attempt[answers_attributes][#{index}][option_id]", option.id %>
                     <%= option.text %> <br/ >
                   <% end -%>
                 </li>
               <% end -%>
-            </ul>
+            </ol>
           <% end -%>
-        <%= f.hidden_field :task_id, value: @task %>
-        <%= f.submit "Submit" %>
-      <% end -%>
-
-      <% elsif @task.trainingtype == 1  %>
-        <% content_for :head do %>
-          <script src="http://jwpsrv.com/library/ZhA1YKsUEeK9ACIACpYGxA.js"></script>
+          <%= f.hidden_field :task_id, value: @task.id %>
+          <%= f.hidden_field :space_id, value: @task.space_id %>
+          <%= f.hidden_field :survey_id, value: @task.contents %>
+          <%= f.submit "Submit" %>
         <% end %>
-        <div id='my-video'></div>
-        <script type='text/javascript'>
-          jwplayer('my-video').setup({
-            file: "<%= @task.contents %>",
-            width: '640',
-            height: '360'
-          });
-        </script>
-      <% else %>
-        <p>This is a task of an unkown type</p>
+
       <% end %>
-    </div>
-  </div>
 
-  <div class="row" id="padtop">
-    <div class="span8">
-      <div class="well">
-        <h4>Learning Objectives:</h4>
-        <p><%= @task.description %></p>
-      </div>
-    </div>
-    <div class="span4" id="padtop">
-      <p class="text-center">
-        <% @user_task = UserTask.new %>
-        <%= simple_form_for @user_task, method: :post do |form| %>
-          <div class="form form-action">
-            <%= form.hidden_field :task_id, :value => @task.id %>
-            <%= submit_tag 'Record Completion', :class => 'btn btn-primary btn-large' %>
-          </div>
-        <% end %>
-      </p>
-    </div>
-  </div>
-
-  <div class="span12">
-    <% if can? :edit, Task %>
-      <%= link_to 'Edit', edit_space_task_path(@space, @task) %> | 
+    <% elsif @task.trainingtype == 1  %>
+      <% content_for :head do %>
+        <script src="http://jwpsrv.com/library/ZhA1YKsUEeK9ACIACpYGxA.js"></script>
+      <% end %>
+      <div id='my-video'></div>
+      <script type='text/javascript'>
+        jwplayer('my-video').setup({
+          file: "<%= @task.contents %>",
+          width: '640',
+          height: '360'
+        });
+      </script>
+    <% else %>
+      <p>This is a task of an unkown type</p>
     <% end %>
-    <%= link_to 'Back to Space', game_space_path(@space.game_id, @space) %>
   </div>
+</div>
+
+<div class="row" id="padtop">
+  <div class="span8">
+    <div class="well">
+      <h4>Learning Objectives:</h4>
+      <p><%= @task.description %></p>
+    </div>
+  </div>
+  <div class="span4" id="padtop">
+    <p class="text-center">
+      <% @user_task = UserTask.new %>
+      <%= simple_form_for @user_task, method: :post do |form| %>
+        <div class="form form-action">
+          <%= form.hidden_field :task_id, :value => @task.id %>
+          <%= submit_tag 'Record Completion', :class => 'btn btn-primary btn-large' %>
+        </div>
+      <% end %>
+    </p>
+  </div>
+</div>
+
+<div class="span12">
+  <% if can? :edit, Task %>
+    <%= link_to 'Edit', edit_space_task_path(@space, @task) %> | 
+  <% end %>
+  <%= link_to 'Back to Space', game_space_path(@space.game_id, @space) %>
+</div>

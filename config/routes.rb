@@ -2,7 +2,7 @@ Gameacert::Application.routes.draw do
 
   namespace :quizzes do
     resources :surveys
-    resources :attempts, :only => [:new, :create, :show]
+    resources :attempts
   end
 
   
