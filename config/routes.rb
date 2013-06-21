@@ -38,6 +38,11 @@ Gameacert::Application.routes.draw do
   end
 
   get '/:id', to: 'profiles#show', as: :profile_page
+
+  # Blitz Authorization
+  get '/mu-0b9bce04-689ca899-d000a695-57ee6283' do
+    '42'
+  end
  
   # The priority is based upon order of creation:
   # first created -> highest priority.
